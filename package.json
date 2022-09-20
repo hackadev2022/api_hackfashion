@@ -1,17 +1,18 @@
 {
-  "name": "api-hackfashion",
+  "name": "api_hackfashion",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/server.js"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.27.2",
+    "dotenv": "^16.0.2",
     "express": "^4.18.1",
-    "pgpromise": "^0.1.1",
-    "resolve": "^1.22.1"
+    "pg-promise": "^10.12.0"
   }
 }
