@@ -8,6 +8,13 @@ router.get("/products", async function (req, res) {
   res.json(products);
 });
 
+router.get("/products/:product_id", async function (req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  let productId = req.params.product_id;
+  let products = await productsService.getProduct(productId);
+  res.json(products);
+});
+
 router.get("/productStar/:product_id", async function (req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   let productId = req.params.product_id;
