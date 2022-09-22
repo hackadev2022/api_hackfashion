@@ -15,6 +15,13 @@ router.get("/products/:product_id", async function (req, res) {
   res.json(products);
 });
 
+router.get("/productSize/:product_id", async function (req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  let productId = req.params.product_id;
+  let products = await productsService.getProductSize(productId);
+  res.json(products);
+});
+
 router.get("/productStar/:product_id", async function (req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   let productId = req.params.product_id;
