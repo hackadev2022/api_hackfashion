@@ -31,6 +31,7 @@ CREATE TABLE public.customer (
                 phone VARCHAR(13),
                 CONSTRAINT customer_pk PRIMARY KEY (customer_id)
 );
+ALTER TABLE customer ADD CONSTRAINT unique_email UNIQUE (email);
 
 
 ALTER SEQUENCE public.customer_customer_id_seq OWNED BY public.customer.customer_id;
