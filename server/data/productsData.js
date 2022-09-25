@@ -19,3 +19,28 @@ exports.getProductStar = function (productId) {
     `SELECT one_star, two_star, three_star, four_star, five_star FROM rating_star WHERE product_id = ${productId}`
   );
 };
+
+exports.getProductsFilter = function (type) {
+  return db.query(
+    `SELECT DISTINCT products.product_id, 
+      products.name, 
+      products.img_link, 
+      products.price, 
+      products.trademark, 
+      products.offer_percent, 
+      products.in_stock 
+      FROM product_types 
+      INNER JOIN products 
+      ON product_types.product_id = products.product_id 
+      INNER JOIN types 
+      ON product_types.type_id = types.type_id 
+      INNER JOIN product_colors
+      ON product_colors.product_id = products.product_id
+      INNER JOIN colors
+      ON colors.color_id = product_colors.color_id
+      WHERE types.type = '${type}' 
+      OR products.trademark = '${type}' 
+      OR products.name = '${type}' 
+      OR colors.color = '${type}'`
+  );
+};
