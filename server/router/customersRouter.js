@@ -38,15 +38,28 @@ router.post("/login", async function (req, res) {
   }
 });
 
-router.post("/custumer", async function (req, res) {
+router.post("/customer", async function (req, res) {
   const nome = req.body.nome;
   const email = req.body.email;
   const senha = req.body.senha;
+  const telefone = req.body.telefone;
 
-  const rows = await customersService.postCustomer(nome, email, senha);
-  res.status(201).send({
-    message: "Usuario cadastrado com sucesso",
-  });
+  if(telefone === undefined){
+
+    const rows = await customersService.postCustomer(nome, email, senha);
+    
+    res.json(rows);
+    
+  }else{
+
+    const rows = await customersService.postCustomer(nome, email, senha, telefone);
+
+    res.json(rows);
+
+  }
+
+  console.log(typeof telefone)
+
 });
 
 module.exports = router;
