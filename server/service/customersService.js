@@ -36,12 +36,14 @@ exports.postLogin = async function (customer_email, loginPassword) {
   return customer;
 };
 
-exports.postCustomer = function (nome, email, senha, telefone) {
+exports.postCustomer = function (nome, email, hashedPassword, telefone, cep, endereço, numero,
+  complemento, referencia, bairro, cidade) {
   if(nome == ''){
     let qualquer = [{
       status: 'Deu ruim irmão'
     }];
     return qualquer
   }
-  return customersData.postCustomer(nome, email, senha, telefone);
+  return customersData.postCustomer(nome, email, hashedPassword, telefone, cep, endereço, numero,
+    complemento, referencia, bairro, cidade);
 };
