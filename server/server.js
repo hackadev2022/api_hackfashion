@@ -10,6 +10,9 @@ server.use(express.json());
 
 server.use("/", require("./router/productsRouter"));
 server.use("/", require("./router/customersRouter"));
+server.use("/", require("./router/addressRouter"));
+server.use("/", require("./router/pedidosRouter"));
+server.use("/", require("./router/orderDetailsRouter"));
 
 server.listen(port, () => {
   console.log(`servidor escutando na porta ${port}`);
