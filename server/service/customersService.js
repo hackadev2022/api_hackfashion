@@ -1,10 +1,9 @@
-const { json } = require("express");
 const customersData = require("../data/customersData");
 
 exports.postLogin = async function (customer_email, loginPassword) {
   let customer = await customersData.postLogin(customer_email);
 
-  if (customer[0] === undefined) {
+  if (customer[0] === undefined || customer[0] === null) {
     customer = [
       {
         customer_id: "",
@@ -37,11 +36,13 @@ exports.postLogin = async function (customer_email, loginPassword) {
 };
 
 exports.postCustomer = function (nome, email, senha, telefone) {
-  if(nome == ''){
-    let qualquer = [{
-      status: 'Deu ruim irmão'
-    }];
-    return qualquer
+  if (nome == "") {
+    let qualquer = [
+      {
+        status: "Deu ruim irmão",
+      },
+    ];
+    return qualquer;
   }
   return customersData.postCustomer(nome, email, senha, telefone);
 };
