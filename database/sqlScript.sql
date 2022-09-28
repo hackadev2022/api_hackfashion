@@ -213,3 +213,7 @@ REFERENCES public.products (product_id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
+
+CREATE SEQUENCE public.pedidos_pedido_id_seq;
+
+ALTER TABLE pedidos ALTER COLUMN pedido_id SET DEFAULT nextval('public.pedidos_pedido_id_seq');
