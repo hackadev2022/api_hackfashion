@@ -6,7 +6,10 @@ router.get("/address/:customer_id", async function (req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   let customer_id = req.params.customer_id;
   let address = await addressService.getAddress(customer_id);
-  res.json(address);
+
+  let lastAddress = address[address.length - 1].id_address;
+
+  res.json(lastAddress);
 });
 
 module.exports = router;
