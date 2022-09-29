@@ -4,10 +4,10 @@ const orderDetailsService = require("../service/orderDetailsService");
 
 router.post("/orderDetails", async function (req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  let product_id = req.params.customer_id;
-  let pedido_id = req.params.pedido_id;
-  let quantity = req.params.quantity;
-  let size = req.params.size;
+  let product_id = req.body.product_id;
+  let pedido_id = req.body.pedido_id;
+  let quantity = req.body.quantity;
+  let size = req.body.size;
 
   await orderDetailsService.postOrderDetails(
     product_id,
