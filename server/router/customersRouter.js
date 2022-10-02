@@ -24,11 +24,17 @@ router.post("/customer", async function (req, res) {
   const complemento = req.body.complemento;
   const referencia = req.body.referencia;
   const bairro = req.body.bairro;
-  const cidade = req.body.cidade;
+  const selectedEstados = req.body.selectedEstados;
+  const city = req.body.city;
+
+
 
   const hashedPassword = bcrypt.hashSync(senha, bcrypt.genSaltSync());
 
   if (telefone === undefined) {
+
+
+
     const rows = await customersService.postCustomer(
       nome,
       email,
@@ -39,7 +45,8 @@ router.post("/customer", async function (req, res) {
       complemento,
       referencia,
       bairro,
-      cidade
+      selectedEstados,
+      city
     );
 
     res.json(rows);
@@ -55,11 +62,13 @@ router.post("/customer", async function (req, res) {
       complemento,
       referencia,
       bairro,
-      cidade
+      selectedEstados,
+      city
     );
 
     res.json(rows);
   }
 });
+
 
 module.exports = router;

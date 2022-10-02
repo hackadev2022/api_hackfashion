@@ -35,7 +35,12 @@ exports.postLogin = async function (customer_email, loginPassword) {
   return customer;
 };
 
-exports.postCustomer = function (nome, email, senha, telefone) {
+exports.postCustomer = function (nome, email, senha, cep, selectedEstados, city,
+  cep, endereço, bairro, numero , complemento, referencia) {
+
+    console.log(complemento)
+    console.log(referencia)
+
   if (nome == "") {
     let qualquer = [
       {
@@ -44,5 +49,7 @@ exports.postCustomer = function (nome, email, senha, telefone) {
     ];
     return qualquer;
   }
-  return customersData.postCustomer(nome, email, senha, telefone);
+  return customersData.postCustomer(nome, email, senha, cep, selectedEstados, city,
+    cep, endereço, bairro, numero , complemento, referencia);
 };
+
