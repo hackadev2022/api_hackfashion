@@ -35,21 +35,22 @@ exports.postLogin = async function (customer_email, loginPassword) {
   return customer;
 };
 
-exports.postCustomer = function (nome, email, senha, cep, selectedEstados, city,
-  cep, endereço, bairro, numero , complemento, referencia) {
+exports.postCustomer = function (nome, email, senha, celular, cep, endereço,
+  numero, complemento, referencia, bairro, selectedEstados, city) {
+  
+    
+    console.log(selectedEstados)
+    
+    // if (nome == "") {
+      //   let qualquer = [
+        //     {
+          //       status: "Deu ruim irmão",
+          //     },
+          //   ];
+          //   return qualquer;
+          // }
 
-    console.log(complemento)
-    console.log(referencia)
-
-  if (nome == "") {
-    let qualquer = [
-      {
-        status: "Deu ruim irmão",
-      },
-    ];
-    return qualquer;
-  }
-  return customersData.postCustomer(nome, email, senha, cep, selectedEstados, city,
-    cep, endereço, bairro, numero , complemento, referencia);
+  return customersData.postCustomer(nome, email, senha, celular, cep, endereço,
+    numero, complemento, referencia, bairro, selectedEstados, city);
 };
 

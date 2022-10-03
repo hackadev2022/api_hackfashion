@@ -13,32 +13,28 @@ router.post("/login", async function (req, res) {
 });
 
 router.post("/customer", async function (req, res) {
+  
   const nome = req.body.nome;
   const email = req.body.email;
   const senha = req.body.senha;
-  const telefone = req.body.telefone;
+  const celular = req.body.celular;
 
+  const city = req.body.city;
+  const selectedEstados = req.body.selectedEstados;
   const cep = req.body.cep;
   const endereço = req.body.endereço;
+  const bairro = req.body.bairro;
   const numero = req.body.numero;
   const complemento = req.body.complemento;
   const referencia = req.body.referencia;
-  const bairro = req.body.bairro;
-  const selectedEstados = req.body.selectedEstados;
-  const city = req.body.city;
 
-
-
-  const hashedPassword = bcrypt.hashSync(senha, bcrypt.genSaltSync());
-
-  if (telefone === undefined) {
-
-
-
+  
+  if (celular === undefined) {
+    
     const rows = await customersService.postCustomer(
       nome,
       email,
-      hashedPassword,
+      senha,
       cep,
       endereço,
       numero,
@@ -47,24 +43,25 @@ router.post("/customer", async function (req, res) {
       bairro,
       selectedEstados,
       city
-    );
-
-    res.json(rows);
-  } else {
-    const rows = await customersService.postCustomer(
-      nome,
-      email,
-      hashedPassword,
-      telefone,
-      cep,
-      endereço,
-      numero,
-      complemento,
-      referencia,
-      bairro,
-      selectedEstados,
-      city
-    );
+      );
+      
+      
+      res.json(rows);
+    }else {
+      const rows = await customersService.postCustomer(
+        nome,
+        email,
+        senha,
+        celular,
+        cep,
+        endereço,
+        numero,
+        complemento,
+        referencia,
+        bairro,
+        selectedEstados,
+        city
+        );
 
     res.json(rows);
   }
