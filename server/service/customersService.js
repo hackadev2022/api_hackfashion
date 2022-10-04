@@ -37,9 +37,6 @@ exports.postLogin = async function (customer_email, loginPassword) {
 
 exports.postCustomer = function (nome, email, senha, celular, cep, endereço,
   numero, complemento, referencia, bairro, selectedEstados, city) {
-  
-    
-    console.log(selectedEstados)
     
     // if (nome == "") {
       //   let qualquer = [
