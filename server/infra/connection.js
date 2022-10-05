@@ -6,11 +6,11 @@ require("dotenv").config(
 );
 const pg = require("pg-promise")();
 const bd = pg({
-  user: process.env.USER_BD,
-  password: process.env.PASSWORD_BD,
-  host: process.env.HOST_BD,
-  port: process.env.PORT_BD,
-  database: process.env.NAME_BD,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME,
 });
 
 module.exports = bd;
