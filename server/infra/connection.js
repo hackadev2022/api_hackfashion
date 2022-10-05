@@ -1,4 +1,9 @@
-require("dotenv").config();
+require("dotenv").config(
+  {
+    path: "../.env"
+  }
+
+);
 const pg = require("pg-promise")();
 const bd = pg({
   user: process.env.USER_BD,
