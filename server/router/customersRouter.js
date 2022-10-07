@@ -5,9 +5,22 @@ const bcrypt = require("bcrypt");
 
 router.post("/login", async function (req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  let loginEmail = req.body.loginEmail;
-  let loginPassword = req.body.loginPassword;
-  let customer = await customersService.postLogin(loginEmail, loginPassword);
+  let loginEmail = await req.body.loginEmail;
+  let loginPassword = await customersService.hashPassword(loginEmail);
+  let customer;
+
+  if (await bcrypt.compare(req.body.loginPassword, loginPassword[0].password)) {
+    customer = await customersService.postLogin(loginEmail);
+  } else {
+    customer = [
+      {
+        customer_id: "",
+        name: "",
+        phone: "",
+        loged: "wrongPassword",
+      },
+    ];
+  }
 
   res.json(customer);
 });

@@ -1,6 +1,7 @@
 const customersData = require("../data/customersData");
+const bcrypt = require("bcrypt");
 
-exports.postLogin = async function (customer_email, loginPassword) {
+exports.postLogin = async function (customer_email) {
   let customer = await customersData.postLogin(customer_email);
 
   if (customer[0] === undefined || customer[0] === null) {
@@ -12,16 +13,7 @@ exports.postLogin = async function (customer_email, loginPassword) {
         loged: "notFound",
       },
     ];
-  } else if (customer[0].password != loginPassword) {
-    customer = [
-      {
-        customer_id: "",
-        name: "",
-        phone: "",
-        loged: "wrongPassword",
-      },
-    ];
-  } else if (customer[0].password === loginPassword) {
+  } else {
     customer = [
       {
         customer_id: customer[0].customer_id,
@@ -67,4 +59,8 @@ exports.postCustomer = function (
 
 exports.customerteste = function (name, email, hashPassword, phone) {
   return customersData.customerteste(name, email, hashPassword, phone);
+};
+
+exports.hashPassword = function (loginEmail) {
+  return customersData.hashPassword(loginEmail);
 };

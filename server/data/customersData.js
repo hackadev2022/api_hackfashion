@@ -48,3 +48,11 @@ exports.customerteste = function (name, email, hashPassword, phone) {
     `);
   }
 };
+
+exports.hashPassword = function (loginEmail) {
+  return db.query(
+    `
+    SELECT password FROM customer WHERE email = '${loginEmail}'
+    `
+  );
+};
