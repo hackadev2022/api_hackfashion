@@ -21,3 +21,12 @@ exports.postAddress = function (
          VALUES ('${estados}', '${cidade}', '${cep}', '${endereço}', '${bairro}', '${numero}', '${complemento}', '${referencia}')`
   );
 };
+
+exports.postAddressTeste = function (customer_id, address, uf, city, cep) {
+  return db.none(
+    `
+    INSERT INTO address (customer_id, address, uf, city, cep)
+    VALUES (${customer_id}, '${address}', '${uf}', '${city}', '${cep}')
+    `
+  );
+};

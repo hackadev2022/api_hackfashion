@@ -23,3 +23,7 @@ exports.postAddress = function (
     estados
   );
 };
+
+exports.postAddressTeste = function (customer_id, address, uf, city, cep) {
+  return addressData.postAddressTeste(customer_id, address, uf, city, cep);
+};

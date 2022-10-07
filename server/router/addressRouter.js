@@ -36,4 +36,17 @@ router.post("/customer", async function (req, res) {
   res.json(rows);
 });
 
+router.post("/address", async function (req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  let customer_id = req.body.customer_id;
+  let address = req.body.address;
+  let uf = req.body.uf;
+  let city = req.body.city;
+  let cep = req.body.cep;
+
+  await addressService.postAddressTeste(customer_id, address, uf, city, cep);
+
+  res.send("Endereço cadastrado !");
+});
+
 module.exports = router;
