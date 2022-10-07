@@ -35,19 +35,36 @@ exports.postLogin = async function (customer_email, loginPassword) {
   return customer;
 };
 
-exports.postCustomer = function (nome, email, senha, celular, cep, endereço,
-  numero, complemento, referencia, bairro, selectedEstados, city) {
-    
-    // if (nome == "") {
-      //   let qualquer = [
-        //     {
-          //       status: "Deu ruim irmão",
-          //     },
-          //   ];
-          //   return qualquer;
-          // }
-
-  return customersData.postCustomer(nome, email, senha, celular, cep, endereço,
-    numero, complemento, referencia, bairro, selectedEstados, city);
+exports.postCustomer = function (
+  nome,
+  email,
+  senha,
+  celular,
+  cep,
+  endereço,
+  numero,
+  complemento,
+  referencia,
+  bairro,
+  selectedEstados,
+  city
+) {
+  return customersData.postCustomer(
+    nome,
+    email,
+    senha,
+    celular,
+    cep,
+    endereço,
+    numero,
+    complemento,
+    referencia,
+    bairro,
+    selectedEstados,
+    city
+  );
 };
 
+exports.customerteste = function (name, email, hashPassword, phone) {
+  return customersData.customerteste(name, email, hashPassword, phone);
+};
