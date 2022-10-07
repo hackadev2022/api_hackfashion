@@ -27,7 +27,7 @@ CREATE TABLE public.customer (
                 customer_id INTEGER NOT NULL DEFAULT nextval('public.customer_customer_id_seq'),
                 name VARCHAR(60) NOT NULL,
                 email VARCHAR(60) NOT NULL,
-                password VARCHAR(20) NOT NULL,
+                password VARCHAR NOT NULL,
                 phone VARCHAR(13),
                 CONSTRAINT customer_pk PRIMARY KEY (customer_id)
 );
