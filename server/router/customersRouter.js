@@ -6,23 +6,38 @@ const bcrypt = require("bcrypt");
 router.post("/login", async function (req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   let loginEmail = await req.body.loginEmail;
-  let loginPassword = await customersService.hashPassword(loginEmail);
+  let loginPassword = await customersService.hashPassword(loginEmail); // senha hash no banco
   let customer;
+  console.log("loginPassword.length");
+  console.log(loginPassword.length);
+  if (loginPassword.length > 0) {
+    if (
+      await bcrypt.compare(req.body.loginPassword, loginPassword[0].password)
+    ) {
+      customer = await customersService.postLogin(loginEmail);
+    } else {
+      customer = [
+        {
+          customer_id: "",
+          name: "",
+          phone: "",
+          loged: "wrongPassword",
+        },
+      ];
+    }
 
-  if (await bcrypt.compare(req.body.loginPassword, loginPassword[0].password)) {
-    customer = await customersService.postLogin(loginEmail);
-  } else {
+    res.json(customer);
+  } else if (loginPassword.length === 0) {
     customer = [
       {
         customer_id: "",
         name: "",
         phone: "",
-        loged: "wrongPassword",
+        loged: "notRegistered",
       },
     ];
+    res.json(customer);
   }
-
-  res.json(customer);
 });
 
 router.post("/customer", async function (req, res) {
