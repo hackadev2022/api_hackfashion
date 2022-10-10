@@ -26,3 +26,4 @@ server.get("/test", (req, res) => {
 server.listen(port, () => {
   console.log(`servidor escutando na porta ${port}`);
 });
+
