@@ -8,8 +8,7 @@ router.post("/login", async function (req, res) {
   let loginEmail = await req.body.loginEmail;
   let loginPassword = await customersService.hashPassword(loginEmail); // senha hash no banco
   let customer;
-  console.log("loginPassword.length");
-  console.log(loginPassword.length);
+
   if (loginPassword.length > 0) {
     if (
       await bcrypt.compare(req.body.loginPassword, loginPassword[0].password)
