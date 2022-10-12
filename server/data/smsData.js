@@ -1,10 +1,20 @@
-const accountSid = 'ACfff5e2af0f32932b357eae69c772fd20'; 
-const authToken = 'f252731ad31f44fa069ac62d6a236eac'; 
+require("dotenv").config({
+  path: ".././.env",
+});
+
+const accountSid = process.env.SID;
+const authToken = process.env.AUTHTOKEN;
+
+console.log(accountSid)
+console.log(authToken)
+
 const client = require('twilio')(accountSid, authToken);
-const numeroZapZap = '';
+
+const numeroZapZap = 'whatsapp:+556293176806';
 
 exports.getSmsData = async function (name, pedido_id) {
   console.log(pedido_id)
+  console.log(name)
     
     client.messages 
 .create({ 
