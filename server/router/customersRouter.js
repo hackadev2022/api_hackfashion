@@ -110,4 +110,22 @@ router.post("/customerteste", async function (req, res) {
   }
 });
 
+router.put("/customer", async function (req, res) {
+  const customer_id = req.body.customer_id;
+  const name = req.body.name;
+  const email = req.body.email;
+  const password = req.body.password;
+  const phone = req.body.phone;
+
+  const updateCustomer = await customersService.putCustomer(
+    customer_id,
+    name,
+    email,
+    password,
+    phone
+  );
+
+  res.json(updateCustomer);
+});
+
 module.exports = router;

@@ -20,6 +20,7 @@ exports.postLogin = async function (customer_email) {
         name: customer[0].name,
         phone: customer[0].phone,
         loged: true,
+        email: customer_email,
       },
     ];
   }
@@ -63,4 +64,44 @@ exports.customerteste = function (name, email, hashPassword, phone) {
 
 exports.hashPassword = function (loginEmail) {
   return customersData.hashPassword(loginEmail);
+};
+
+exports.putCustomer = async function (
+  customer_id,
+  name,
+  email,
+  password,
+  phone
+) {
+  try {
+    if (name) {
+      await customersData.putCustomerName(name, customer_id);
+    }
+    if (email) {
+      await customersData.putCustomerEmail(email, customer_id);
+    }
+    if (password) {
+      let hashPassword = await bcrypt.hash(password, 8);
+      await customersData.putCustomerPassword(hashPassword, customer_id);
+    }
+    if (phone) {
+      await customersData.putCustomerPhone(phone, customer_id);
+    }
+
+    let customer = await customersData.putCustomer(customer_id);
+
+    customer = [
+      {
+        customer_id: customer[0].customer_id,
+        name: customer[0].name,
+        phone: customer[0].phone,
+        loged: true,
+        email: customer[0].email,
+      },
+    ];
+
+    return customer;
+  } catch (error) {
+    return error;
+  }
 };

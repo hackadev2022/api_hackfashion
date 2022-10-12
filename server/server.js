@@ -1,8 +1,6 @@
-require("dotenv").config(
-  {
-    path: "../.env"
-  }
-);
+require("dotenv").config({
+  path: "./.env",
+});
 
 const express = require("express");
 const server = express();
@@ -26,4 +24,3 @@ server.get("/test", (req, res) => {
 server.listen(port, () => {
   console.log(`servidor escutando na porta ${port}`);
 });
-

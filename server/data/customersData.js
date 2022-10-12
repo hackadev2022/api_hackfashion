@@ -56,3 +56,31 @@ exports.hashPassword = function (loginEmail) {
     `
   );
 };
+
+exports.putCustomerName = function (name, customer_id) {
+  return db.query(`
+    UPDATE customer SET name = '${name}' WHERE customer_id = ${customer_id}
+  `);
+};
+
+exports.putCustomerEmail = function (email, customer_id) {
+  return db.query(`
+    UPDATE customer SET email = '${email}' WHERE customer_id = ${customer_id}
+  `);
+};
+
+exports.putCustomerPassword = function (password, customer_id) {
+  return db.query(`
+    UPDATE customer SET password = '${password}' WHERE customer_id = ${customer_id}
+  `);
+};
+
+exports.putCustomerPhone = function (phone, customer_id) {
+  return db.query(`
+    UPDATE customer SET phone = '${phone}' WHERE customer_id = ${customer_id}
+  `);
+};
+
+exports.putCustomer = function (customer_id) {
+  return db.query(`SELECT * FROM customer WHERE customer_id = ${customer_id}`);
+};
