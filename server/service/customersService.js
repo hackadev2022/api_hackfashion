@@ -105,3 +105,7 @@ exports.putCustomer = async function (
     return error;
   }
 };
+
+exports.getName = function (customer_id) {
+  return customersData.getName(customer_id);
+};

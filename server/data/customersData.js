@@ -84,3 +84,9 @@ exports.putCustomerPhone = function (phone, customer_id) {
 exports.putCustomer = function (customer_id) {
   return db.query(`SELECT * FROM customer WHERE customer_id = ${customer_id}`);
 };
+
+exports.getName = function (customer_id) {
+  return db.query(
+    `SELECT name FROM customer WHERE customer_id = ${customer_id}`
+  );
+};
