@@ -17,8 +17,8 @@ exports.postAddress = function (
   estados
 ) {
   return db.query(
-    `INSERT INTO address_hackfashion (states, city, cep, address, district, number_house, complement, reference) 
-         VALUES ('${estados}', '${cidade}', '${cep}', '${endereço}', '${bairro}', '${numero}', '${complemento}', '${referencia}')`
+    `INSERT INTO address_hackfashion (address, uf, city, cep) 
+         VALUES ('${endereço}', '${estados}', '${cidade}', '${cep}')`
   );
 };
 
