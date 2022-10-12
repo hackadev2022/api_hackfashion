@@ -5,7 +5,7 @@ const addressService = require("../service/addressService");
 router.get("/address/:customer_id", async function (req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   let customer_id = req.params.customer_id;
-  let address = await addressService.getAddress(customer_id);
+  let address = await addressService.getAddressId(customer_id);
 
   let lastAddress = address[address.length - 1].id_address;
 
@@ -47,6 +47,40 @@ router.post("/address", async function (req, res) {
   await addressService.postAddressTeste(customer_id, address, uf, city, cep);
 
   res.send("Endereço cadastrado !");
+});
+
+router.post("/addressData", async function (req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  let customer_id = req.body.customer_id;
+
+  if (customer_id === undefined || customer_id === "") {
+    res.send("erro");
+  } else {
+    let addressData = await addressService.postAddressData(customer_id);
+
+    let lastAddress = addressData[addressData.length - 1];
+
+    res.json(lastAddress);
+  }
+});
+
+router.put("/address", async function (req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  let customer_id = req.body.customer_id;
+  let address = req.body.address;
+  let uf = req.body.uf;
+  let city = req.body.city;
+  let cep = req.body.cep;
+
+  const updateAddress = await addressService.putAddress(
+    customer_id,
+    address,
+    uf,
+    city,
+    cep
+  );
+
+  res.send(updateAddress);
 });
 
 module.exports = router;
