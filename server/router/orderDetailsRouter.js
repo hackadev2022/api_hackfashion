@@ -9,7 +9,7 @@ router.post("/orderDetails", async function (req, res) {
   let quantity = req.body.quantity;
   let size = req.body.size;
   try {
-    let rows = await orderDetailsService.postOrderDetails(
+    await orderDetailsService.postOrderDetails(
       product_id,
       pedido_id,
       quantity,

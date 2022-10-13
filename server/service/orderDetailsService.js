@@ -12,9 +12,6 @@ exports.postOrderDetails = async function (
       size
     );
 
-    console.log("totalQuantityQuery");
-    console.log(totalQuantityQuery);
-
     let totalQuantity;
 
     if (size === "p") {
