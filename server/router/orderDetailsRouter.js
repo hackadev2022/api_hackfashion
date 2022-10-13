@@ -8,14 +8,18 @@ router.post("/orderDetails", async function (req, res) {
   let pedido_id = req.body.pedido_id;
   let quantity = req.body.quantity;
   let size = req.body.size;
+  try {
+    let rows = await orderDetailsService.postOrderDetails(
+      product_id,
+      pedido_id,
+      quantity,
+      size
+    );
 
-  await orderDetailsService.postOrderDetails(
-    product_id,
-    pedido_id,
-    quantity,
-    size
-  );
-  res.send("orderDetails criada");
+    res.send("orderDetails criada");
+  } catch (error) {
+    res.send(error);
+  }
 });
 
 module.exports = router;
